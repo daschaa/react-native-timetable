@@ -1,15 +1,15 @@
 import React, { createContext, FC, useRef } from 'react';
-import { View, StyleSheet, ScrollView, ViewStyle } from 'react-native';
+import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 
 import EventCard from './EventCard';
 import TimeIndicator from './TimeIndicator';
 import { EVENT_COLORS, THEME } from '../utils/constants';
 import TimeTableTicks from './TimeTableTicks';
-import WeekdayText from './WeekdayText';
-import type { Configs, EventGroup, Event } from '../types';
+import type { Configs, Event, EventGroup } from '../types';
 import getEventsFromGroup from '../utils/getEventsFromGroup';
 import TimeTableGrid from './TimeTableGrid';
 import getConfigs from '../utils/getConfigs';
+import Header from './Header';
 
 type TimeTableProps = {
   events?: Event[];
@@ -87,17 +87,12 @@ const TimeTable: FC<TimeTableProps> = ({
       <ThemeContext.Provider value={theme}>
         <View style={contentContainerStyle}>
           {!disableHeader && (
-            <View style={[styles.weekdayRow, headerStyle]}>
-              <View style={styles.placeholder} />
-              <ScrollView
-                scrollEnabled={false}
-                ref={weekdayScrollRef}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-              >
-                <WeekdayText />
-              </ScrollView>
-            </View>
+            <Header
+              theme={theme}
+              headerStyle={headerStyle}
+              timeTicksWidth={timeTicksWidth}
+              weekdayScrollRef={weekdayScrollRef}
+            />
           )}
           <ScrollView
             ref={courseVerticalScrollRef}

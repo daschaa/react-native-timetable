@@ -4,14 +4,18 @@ import { View, Text, StyleSheet } from 'react-native';
 import { WEEKDAYS } from '../utils/constants';
 import { ConfigsContext, ThemeContext } from './TimeTable';
 
-const WeekdayText: FC = () => {
+export interface WeekdayTextProps {
+  weekdays?: string[];
+}
+
+const WeekdayText: FC<WeekdayTextProps> = (props: WeekdayTextProps) => {
   const configs = useContext(ConfigsContext);
   const theme = useContext(ThemeContext);
   const { cellWidth, numOfDays } = configs;
   const currentDay = new Date();
   const currentWeekday = currentDay.getDay() ? currentDay.getDay() : 7;
   const styles = getStyles({ cellWidth, theme });
-
+  const weekdays = props.weekdays ? props.weekdays : WEEKDAYS;
   return (
     <>
       {Array.from({ length: numOfDays }, (_, i) => 1 + i).map((day) => {
@@ -26,7 +30,7 @@ const WeekdayText: FC = () => {
                 currentWeekday === day && styles.weekdayTextHighlight,
               ]}
             >
-              {`${WEEKDAYS[day - 1]} ${thatDay.getDate()}`}
+              {`${weekdays[day - 1]} ${thatDay.getDate()}`}
             </Text>
           </View>
         );

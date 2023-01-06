@@ -1,6 +1,6 @@
 {
-  "name": "@mikezzb/react-native-timetable",
-  "version": "0.2.6",
+  "name": "@daschaa/react-native-timetable",
+  "version": "0.2.7",
   "description": "React Native TimeTable Component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -37,13 +37,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mikezzb/react-native-timetable",
-  "author": "mikezzb <mikezhoudev@gmail.com> (https://github.com/mikezzb)",
+  "repository": "https://github.com/daschaa/react-native-timetable",
+  "author": "daschaa (https://github.com/daschaa)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikezzb/react-native-timetable/issues"
+    "url": "https://github.com/daschaa/react-native-timetable/issues"
   },
-  "homepage": "https://github.com/mikezzb/react-native-timetable#readme",
+  "homepage": "https://github.com/daschaa/react-native-timetable#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

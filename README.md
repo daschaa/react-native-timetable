@@ -1,3 +1,5 @@
+> ⚠️ This is a fork from [@mikezzb/react-native-timetable](https://github.com/mikezzb/react-native-timetable)
+
 # React Native Timetable
 
 React Native Timetable View
