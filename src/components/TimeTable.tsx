@@ -22,6 +22,7 @@ type TimeTableProps = {
   disableTicker?: boolean;
   contentContainerStyle?: ViewStyle;
   theme?: Partial<typeof THEME>;
+  formatWeekday?: (dayOfWeek: number, dayOfMonth: number) => string;
 };
 
 export const ThemeContext = createContext<typeof THEME>(null);
@@ -39,6 +40,7 @@ const TimeTable: FC<TimeTableProps> = ({
   eventColors = EVENT_COLORS,
   configs: propConfigs,
   theme: propTheme,
+  formatWeekday,
 }) => {
   const weekdayScrollRef = useRef<null | ScrollView>(null);
   const courseHorizontalScrollRef = useRef<null | ScrollView>(null);
@@ -92,6 +94,7 @@ const TimeTable: FC<TimeTableProps> = ({
               headerStyle={headerStyle}
               timeTicksWidth={timeTicksWidth}
               weekdayScrollRef={weekdayScrollRef}
+              formatWeekday={formatWeekday}
             />
           )}
           <ScrollView

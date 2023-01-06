@@ -5,7 +5,7 @@ import { WEEKDAYS } from '../utils/constants';
 import { ConfigsContext, ThemeContext } from './TimeTable';
 
 export interface WeekdayTextProps {
-  weekdays?: string[];
+  renderWeekday?: (dayOfWeek: number, dayOfMonth: number) => string | React.FC;
 }
 
 const WeekdayText: FC<WeekdayTextProps> = (props: WeekdayTextProps) => {
@@ -15,7 +15,9 @@ const WeekdayText: FC<WeekdayTextProps> = (props: WeekdayTextProps) => {
   const currentDay = new Date();
   const currentWeekday = currentDay.getDay() ? currentDay.getDay() : 7;
   const styles = getStyles({ cellWidth, theme });
-  const weekdays = props.weekdays ? props.weekdays : WEEKDAYS;
+  const formatWeekday = props.renderWeekday
+    ? props.renderWeekday
+    : (dayOfWeek, dayOfMonth) => `${WEEKDAYS[dayOfWeek - 1]} ${dayOfMonth}`;
   return (
     <>
       {Array.from({ length: numOfDays }, (_, i) => 1 + i).map((day) => {
@@ -30,7 +32,7 @@ const WeekdayText: FC<WeekdayTextProps> = (props: WeekdayTextProps) => {
                 currentWeekday === day && styles.weekdayTextHighlight,
               ]}
             >
-              {`${weekdays[day - 1]} ${thatDay.getDate()}`}
+              {formatWeekday(day, thatDay.getDate())}
             </Text>
           </View>
         );

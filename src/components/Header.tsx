@@ -7,7 +7,7 @@ export interface HeaderProps {
   theme: any;
   headerStyle: any;
   weekdayScrollRef: any;
-  weekdays?: string[];
+  formatWeekday?: (dayOfWeek: number, dayOfMonth: number) => string | React.FC;
 }
 
 const Header: FC<HeaderProps> = ({
@@ -15,7 +15,7 @@ const Header: FC<HeaderProps> = ({
   theme,
   headerStyle,
   weekdayScrollRef,
-  weekdays,
+  formatWeekday,
 }) => {
   const styles = getStyles({ timeTicksWidth, theme });
   return (
@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = ({
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        <WeekdayText weekdays={weekdays} />
+        <WeekdayText renderWeekday={formatWeekday} />
       </ScrollView>
     </View>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, StatusBar, StyleSheet, View } from 'react-native';
+import { Alert, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import TimeTable from '@daschaa/react-native-timetable';
 
@@ -145,6 +145,7 @@ const eventGroups = [
 ];
 
 export default function App() {
+  const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeAreaContainer}>
@@ -163,6 +164,9 @@ export default function App() {
               Alert.alert(`${JSON.stringify(event)}`);
               console.log(eventGroups[event.groupIndex]); // only for eventGroups
             }}
+            formatWeekday={(dayOfWeek) => (
+              <Text>{weekdays[dayOfWeek - 1]}</Text>
+            )}
           />
         </View>
       </SafeAreaView>
