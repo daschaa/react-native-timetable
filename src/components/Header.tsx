@@ -15,7 +15,7 @@ const Header: FC<HeaderProps> = ({
   theme,
   headerStyle,
   weekdayScrollRef,
-  weekdays
+  weekdays,
 }) => {
   const styles = getStyles({ timeTicksWidth, theme });
   return (

@@ -30,7 +30,7 @@ const groupToEvents = ({
           if (
             Number.isNaN(sHour) ||
             Number.isNaN(eHour) ||
-            Number.isNaN(typeof day === "string" ? parseInt(day, 10) : day)
+            Number.isNaN(typeof day === 'string' ? parseInt(day, 10) : day)
           )
             return;
           const sTime = +sHour + +sMinute / 60;
