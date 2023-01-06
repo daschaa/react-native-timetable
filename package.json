@@ -145,5 +145,7 @@
       ]
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "metro-react-native-babel-preset": "^0.73.7"
+  }
 }
